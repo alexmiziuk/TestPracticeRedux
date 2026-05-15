@@ -53,8 +53,11 @@ const initialState = {
 		description: '',
 		element: ''
 	},
-	shouldUpdate: false, // Добавляем shouldUpdate в начальное состояние
-	loading: true, // Начальное состояние загрузки
+	shouldUpdate: false,
+	filterElement: 'all',
+	heroesLoading: true,
+	formSubmitting: false,
+	deletingHeroId: null,
 };
 
 const counterReducer = (state = initialState, action) => {
@@ -102,10 +105,20 @@ const counterReducer = (state = initialState, action) => {
 					 ...state,
 					 filterElement: action.payload
 			};
-			case 'SET_LOADING':
+			case 'SET_HEROES_LOADING':
 				return {
-				  ...state,
-				  loading: action.payload, // Обновляем состояние загрузки
+					...state,
+					heroesLoading: action.payload,
+				};
+			case 'SET_FORM_SUBMITTING':
+				return {
+					...state,
+					formSubmitting: action.payload,
+				};
+			case 'SET_DELETING_HERO_ID':
+				return {
+					...state,
+					deletingHeroId: action.payload,
 				};
 		default:
 			return state;

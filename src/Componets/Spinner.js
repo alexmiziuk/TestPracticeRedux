@@ -1,9 +1,10 @@
-const Spinner = () => {
-	return (
-		 <div className="spinner-border mx-auto mt-5" role="status">
-			  <span className="visually-hidden">Loading...</span>
-		 </div>
-	)
-}
+import './Spinner.css';
+
+const Spinner = () => (
+	<div className="spinner-wrapper" role="status" aria-label="Загрузка">
+		<div className="spinner" />
+		<span className="spinner__sr-only">Загрузка...</span>
+	</div>
+);
 
 export default Spinner;

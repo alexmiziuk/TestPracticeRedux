@@ -1,0 +1,32 @@
+.spinner-wrapper {
+	display: flex;
+	justify-content: center;
+	padding: 2.5rem 0;
+}
+
+.spinner {
+	width: 2.75rem;
+	height: 2.75rem;
+	border: 3px solid rgba(255, 255, 255, 0.1);
+	border-top-color: #818cf8;
+	border-radius: 50%;
+	animation: spinner-rotate 0.75s linear infinite;
+}
+
+.spinner__sr-only {
+	position: absolute;
+	width: 1px;
+	height: 1px;
+	padding: 0;
+	margin: -1px;
+	overflow: hidden;
+	clip: rect(0, 0, 0, 0);
+	white-space: nowrap;
+	border: 0;
+}
+
+@keyframes spinner-rotate {
+	to {
+		transform: rotate(360deg);
+	}
+}

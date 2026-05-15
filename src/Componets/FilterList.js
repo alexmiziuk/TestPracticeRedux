@@ -1,50 +1,39 @@
-// Filter.js
 import React from 'react';
-import { useDispatch,  useSelector } from 'react-redux';
-import { setFilterElement, setLoading } from '../Actions/actions';
-import { useServer } from '../Server/server';
-import Spinner from './Spinner';
+import { useDispatch, useSelector } from 'react-redux';
+import { setFilterElement } from '../Actions/actions';
 
+const FILTERS = [
+	{ id: 'all', label: 'Все', className: 'filter-btn--all' },
+	{ id: 'fire', label: 'Огонь', className: 'filter-btn--fire' },
+	{ id: 'water', label: 'Вода', className: 'filter-btn--water' },
+	{ id: 'wind', label: 'Ветер', className: 'filter-btn--wind' },
+	{ id: 'earth', label: 'Земля', className: 'filter-btn--earth' },
+];
 
 const FilterList = () => {
 	const dispatch = useDispatch();
-	const fetchData = useServer(); // Используем хук для отправки запросов на сервер
-	const loading = useSelector(state => state.loading); // Получаем состояние загрузки из Redux Store
-	
+	const filterElement = useSelector(state => state.filterElement || 'all');
 
-	const handleFilterClick = async (element) => {
-		try {
-			// Устанавливаем состояние загрузки в хранилище Redux
-			dispatch(setLoading(true));
-			// Отправляем запрос на сервер для получения героев с заданным элементом
-			await fetchData(`http://localhost:3001/heroes?element=${element}`);
-
-			// Устанавливаем фильтр элемента в хранилище Redux
-			dispatch(setFilterElement(element));
-		} catch (error) {
-			console.error('Error fetching filtered heroes:', error);
-			// Обработка ошибки, если необходимо
-		}
-		finally {
-			// Устанавливаем состояние загрузки в хранилище Redux
-			dispatch(setLoading(false));
-		}
+	const handleFilterClick = (element) => {
+		dispatch(setFilterElement(element));
 	};
 
 	return (
-		<div>
-		{loading ? (
-			 <Spinner /> // Показываем спиннер во время загрузки данных
-		) : (
-		<>
-			 <button onClick={() => handleFilterClick('all')}>Все</button>
-			 <button onClick={() => handleFilterClick('fire')}>Огонь</button>
-			 <button onClick={() => handleFilterClick('water')}>Вода</button>
-			 <button onClick={() => handleFilterClick('wind')}>Ветер</button>
-			 <button onClick={() => handleFilterClick('earth')}>Земля</button>
-		</>
-		)}
-  </div>
+		<div className="filter-group" role="group" aria-label="Фильтр по элементу">
+			<span className="filter-group__label">Фильтр</span>
+			<div className="filter-group__buttons">
+				{FILTERS.map(({ id, label, className }) => (
+					<button
+						key={id}
+						type="button"
+						className={`filter-btn ${className}${filterElement === id ? ' is-active' : ''}`}
+						onClick={() => handleFilterClick(id)}
+					>
+						{label}
+					</button>
+				))}
+			</div>
+		</div>
 	);
 };
 

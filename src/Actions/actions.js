@@ -80,9 +80,17 @@ export const setFilterElement = (element) => {
 	};
 };
 
-export const setLoading = (isLoading) => {
-	return {
-		 type: 'SET_LOADING',
-		 payload: isLoading
-	};
-}
+export const setHeroesLoading = (isLoading) => ({
+	type: 'SET_HEROES_LOADING',
+	payload: isLoading,
+});
+
+export const setFormSubmitting = (isSubmitting) => ({
+	type: 'SET_FORM_SUBMITTING',
+	payload: isSubmitting,
+});
+
+export const setDeletingHeroId = (heroId) => ({
+	type: 'SET_DELETING_HERO_ID',
+	payload: heroId,
+});

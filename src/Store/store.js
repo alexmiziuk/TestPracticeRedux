@@ -4,13 +4,15 @@
  Мы используем configureStore, чтобы создать Redux-хранилище, 
  передавая ему корневой редьюсер. */
 
-import { configureStore } from '@reduxjs/toolkit';
-import rootReducer from '../Reducers/reducers';
-
-const store = configureStore({
-	reducer: rootReducer
-});
-
-export default store;
+ import { configureStore } from '@reduxjs/toolkit';
+ import rootReducer from '../Reducers/reducers';
+ 
+ const store = configureStore({
+	 reducer: rootReducer
+ });
+ 
+ export default store;
+ 
+ 
 
 

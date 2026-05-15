@@ -1,22 +1,28 @@
 {
   "heroes": [
     {
-      "id": "1",
-      "name": "Первый герой",
-      "description": "Первый герой в рейтинге!",
+      "id": "7433",
+      "name": "Огненный",
+      "description": "Жгучий, убивающий жаром, пылкий",
       "element": "fire"
     },
     {
-      "id": "2",
-      "name": "Неизвестный герой",
-      "description": "Скрывающийся в тени",
+      "id": "ea6b",
+      "name": "Водяной",
+      "description": "Охлаждающий пламя, прохладный, и обволакивающий",
+      "element": "water"
+    },
+    {
+      "id": "e34d",
+      "name": "Воздушный",
+      "description": "Порывистый, стремительный и воздушный",
       "element": "wind"
     },
     {
-      "id": "0701",
-      "name": " Oleksandr Miziuk",
-      "description": "чсчс",
-      "element": "water"
+      "id": "a08a",
+      "name": "Плодородный",
+      "description": "Дающий жизнь, и произростание",
+      "element": "earth"
     }
   ],
   "filters": [
